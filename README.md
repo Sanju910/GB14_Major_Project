@@ -1,41 +1,36 @@
 # Image Forgery Detection using CNN
 
-Detects the authenticity of an image using Error Level Analysis and Convolutional Neural Networks.
+Detects the authenticity of an image using machine learning models trained on feature vectors generated from both pretrained CNN models and the texture-based GLCM algorithm.
 
-## Introduction
+## Proposed Methodology
 
-### Error Level Analysis
- > Error Level Analysis is an image feature extraction technique. JPEG is a lossy compression format and hence the pixels in the images stored in that format tend to be downsampled from which they are captured initially. When an authentic image is loaded into an image editing software, tampered and then stored again in JPG format, the pixels where the image has been tampered will have distinct compression artifacts relative to the adjacent pixels. These compression artifacts can be analysed to detect the presence of image tampering.  
+![Proposed Methodology workflow](Proposed_model.png?raw=true)
 
-### Convolutional Neural Network
- > A Convolutional Neural Network(ConvNet/CNN) is a Deep Learning algorithm which can take in an input image, assign importance(learnable weights and biases) to various aspects/objects in the image and be able to differentiate one from the other.
+The proposed methodology combines GLCM-based texture features and DenseNet-derived semantic features through fusion to create a comprehensive representation. By integrating local texture information with global semantic content, the methodology aims to provide a holistic characterization of images, leveraging the complementary nature of GLCM and CNN features. Subsequently, a diverse set of machine learning classifiers are trained on the fused feature vectors to enhance image forgery detection by discerning subtle patterns and discrepancies within the feature space.
+
+### CNN Model Training and Feature Extraction Process:
+
+For CNN model training, we integrate Error Level Analysis (ELA) as a preprocessing step to enhance the discriminative power of the feature extraction process. ELA exploits compression artifacts introduced during the resaving of JPEG images, providing insights into potentially manipulated regions. The input images undergo transformation into an ELA representation with a compression quality factor of 90 before being resized to 128x128 dimensions to align with the input requirements of the Inception v3 architecture. Feature extraction primarily focuses on the last dense layer of the classification head, yielding a high-dimensional feature vector containing 256 features. These features encapsulate hierarchical representations learned by the DCNN model, effectively capturing intricate patterns and semantic information within the input image.
+
 
 ## Setup and Usage
 
-1. Upgrade pip.
-2. Install the following py modules
-
-    * ```keras```
-    * ```numpy```
-    * ```pillow```
-    * ```pyqt5```
-3. Clone this repo to your local machine.
-4. Run the ```ui.py``` file.
-5. Browse an image from your local machine and test it.
+1. Clone the repo to your local machine
+2. Create a python virtual environment using ```python -m venv <env_name>```
+3. Activate the environment using ```<env_name>\Scripts\activate.bat```
+4. Install the required packages using ```pip install -r requirements.txt```
+5. Run the ```ui.py``` file.
+6. Browse an image from your local machine and test it.
 
 ## Dataset
-[Casia dataset - Kaggle](https://www.kaggle.com/sophatvathana/casia-dataset)
-* Total Images : 11129
-* Authentic images : 8144
-* Forged images : 2985
+[Casia v2](https://www.kaggle.com/sophatvathana/casia-dataset)
 
-## Contributors
-<a href="https://github.com/0xsp/image-forgery-detection/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=0xsp/image-forgery-detection" />
-</a>
+* Total Images : 12614
+* Authentic images : 7491
+* Forged images : 5123
 
-## License
-MIT
+[MICC-F2000](https://www.kaggle.com/datasets/manas29/micc-f2000)
 
-## Reference  
-[FotoForensics](https://fotoforensics.com/)
+* Total Images : 2000
+* Authentic images : 1300
+* Forged images : 700
