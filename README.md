@@ -12,6 +12,18 @@ The proposed methodology combines GLCM-based texture features and DenseNet-deriv
 
 For CNN model training, we integrate Error Level Analysis (ELA) as a preprocessing step to enhance the discriminative power of the feature extraction process. ELA exploits compression artifacts introduced during the resaving of JPEG images, providing insights into potentially manipulated regions. The input images undergo transformation into an ELA representation with a compression quality factor of 90 before being resized to 128x128 dimensions to align with the input requirements of the CNN architecture. Feature extraction primarily focuses on the last dense layer of the classification head, yielding a high-dimensional feature vector containing 256 features. These features encapsulate hierarchical representations learned by the DCNN model, effectively capturing intricate patterns and semantic information within the input image.
 
+## Dataset
+[Casia v2](https://www.kaggle.com/sophatvathana/casia-dataset)
+
+* Total Images : 12614
+* Authentic images : 7491
+* Forged images : 5123
+
+[MICC-F2000](https://www.kaggle.com/datasets/manas29/micc-f2000)
+
+* Total Images : 2000
+* Authentic images : 1300
+* Forged images : 700
 
 ## Setup and Usage
 
@@ -26,15 +38,4 @@ For CNN model training, we integrate Error Level Analysis (ELA) as a preprocessi
 
 ![Demo Image Test](Demo.png?raw=true)
 
-## Dataset
-[Casia v2](https://www.kaggle.com/sophatvathana/casia-dataset)
 
-* Total Images : 12614
-* Authentic images : 7491
-* Forged images : 5123
-
-[MICC-F2000](https://www.kaggle.com/datasets/manas29/micc-f2000)
-
-* Total Images : 2000
-* Authentic images : 1300
-* Forged images : 700
