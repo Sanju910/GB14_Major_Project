@@ -22,6 +22,10 @@ For CNN model training, we integrate Error Level Analysis (ELA) as a preprocessi
 5. Run the ```ui.py``` file.
 6. Browse an image from your local machine and test it.
 
+## Demonstration
+
+![Demo Image Test](Demo.png?raw=true)
+
 ## Dataset
 [Casia v2](https://www.kaggle.com/sophatvathana/casia-dataset)
 
